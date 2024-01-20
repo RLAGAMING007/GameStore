@@ -1,22 +1,38 @@
-import React, { Children } from "react";
+import React, { Children, useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import ManageAccountsOutlinedIcon from "@mui/icons-material/ManageAccountsOutlined";
 import PublicIcon from "@mui/icons-material/Public";
 import { Link, useResolvedPath, useMatch } from "react-router-dom";
 import { Height } from "@mui/icons-material";
 const Header = () => {
+  const [toggleMenu, useToggleMenu] = useState(false);
+
+  const HandleToggleMenu = () => {
+    useToggleMenu(!toggleMenu);
+  };
+
   return (
     <>
       <header className="global-header">
         <div className="container">
           <div className="global-header__menu  hide-in-drawer">
             <div className="dropdown-menu">
-              <button className="dropdown-menu__btn">
+              <button onClick={HandleToggleMenu} className="dropdown-menu__btn">
                 <img src="assets/logo.png" alt="" />
-                <span className="expand-icon">{<ExpandMoreIcon />}</span>
+                <span
+                  className={toggleMenu ? "expand-icon" : "expand-icon  expand"}
+                >
+                  <ExpandMoreIcon
+                    style={{
+                      color: toggleMenu ? "white" : "",
+                      transform: toggleMenu ? "rotate(180deg)" : "rotate(0deg)",
+                      transition: "transform 0.2s",
+                    }}
+                  />
+                </span>
               </button>
             </div>
-
+            <hr />
             <nav className="global-header__nav">
               <div className="store-logo">
                 <img className="store-txt" src="assets/store-txt.png" alt="" />
@@ -49,7 +65,7 @@ const Header = () => {
             </button>
 
             <button className="profile">
-              <img src="assets/person-w.png" alt="profile" />
+              <ManageAccountsOutlinedIcon />
             </button>
             <button className="download-btn">Download</button>
           </div>
@@ -64,7 +80,7 @@ const CustomLink = ({ to, children, ...props }) => {
   const isActivePath = useMatch({ path: resolvedPath.pathname, end: true });
   return (
     <>
-      <li {...props}>
+      <li>
         <Link to={to} {...props}>
           {children}
         </Link>

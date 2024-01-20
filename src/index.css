@@ -1,5 +1,6 @@
 @import url("./App.css");
 @import url("./css/Header.css");
+@import url("./css/Navbar.css");
 
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700;800&display=swap");
 
@@ -19,6 +20,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: var(--background-color);
+  overflow-y: scroll;
 }
 
 :root {
