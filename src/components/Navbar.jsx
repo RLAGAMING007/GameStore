@@ -1,44 +1,56 @@
 import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
-import { Height } from "@mui/icons-material";
+import { Link } from "react-router-dom";
+
 const MainNav = () => (
   <>
     <div className="global-nav">
       <div className="sub-nav">
         <div className="sub-nav__search">
-          <SearchIcon style={{ height: "18px", color: "rgb(158, 158, 158)" }} />
-          <input type="text" placeholder="Search Store" />
+          <button className="search-icon__btn">
+            <SearchIcon
+              style={{
+                height: "16px",
+                width: "18px",
+                color: "rgb(158, 158, 158)",
+              }}
+            />
+          </button>
+
+          <div className="search-input">
+            <input type="text" placeholder="Search store" />
+          </div>
         </div>
         <div className="sub-nav__list0">
           <ul className="sub-nav__list-items">
             <li>
-              <a className="sub-nav__list-item" href="/discover">
+              <Link className="sub-nav__list-item" to="/discover">
                 Discover
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="sub-nav__list-item" href="/browse">
+              <Link className="sub-nav__list-item" to="/browse">
                 Browse
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="sub-nav__list-item" href="/news">
+              <Link className="sub-nav__list-item" to="/news">
                 News
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
-        <div className="sub-nav__list0">
+        <div className="sub-nav__list1">
           <ul className="sub-nav__list-items">
             <li>
-              <a className="sub-nav__list-item" href="/wishlist">
+              <Link className="sub-nav__list-item" to="/wishlist">
                 Wishlist
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="sub-nav__list-item" href="/kart">
-                Kart
-              </a>
+              <Link className="sub-nav__list-item" to="/cart">
+                Cart
+              </Link>
             </li>
           </ul>
         </div>
